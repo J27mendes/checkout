@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Checkout {
+  id           String         @id @default(uuid())
+  createdAt    DateTime       @default(now())
+  identify     Identify?
+  address      Address?
+  payment      Payment?
+}
+
+model Identify {
+  id           Int            @id @default(autoincrement())
+  nomeCompleto String         @db.VarChar(255)
+  email        String         @db.VarChar(255)
+  cpf          String         @db.VarChar(20)
+  celular      String         @db.VarChar(20)
+  checkoutId   String         @unique
+  checkout     Checkout       @relation(fields: [checkoutId], references: [id], onDelete: Cascade)
+}
+
+model Address {
+  id            Int          @id @default(autoincrement())
+  cep           String       @db.VarChar(9)
+  endereco      String
+  numero        String       @db.VarChar(10)
+  bairro        String
+  complemento   String?
+  destinatario  String
+  formaEntrega  TipoEntrega
+  checkoutId    String       @unique
+  checkout      Checkout     @relation(fields: [checkoutId], references: [id], onDelete: Cascade)
+}
+enum TipoEntrega {
+  GRATUITO
+  EXPRESSO_SEGURO
+}
+
+model Payment {
+  id                 Int      @id @default(autoincrement())
+  last4Digits        String   @db.VarChar(4)
+  validade           String   @db.VarChar(7) 
+  nomeNoCartao       String
+  cpfTitular         String   @db.VarChar(11)
+  parcelas           Int
+  seguro             Boolean  @default(false)
+  status             String   @db.VarChar(50)
+  transactionId      String   @db.VarChar(100)
+  authorizationCode  String?  @db.VarChar(50)
+  paymentType        String?  @db.VarChar(30)
+  createdAt          DateTime @default(now())
+  checkoutId         String   @unique
+  checkout           Checkout @relation(fields: [checkoutId], references: [id], onDelete: Cascade)
+}
