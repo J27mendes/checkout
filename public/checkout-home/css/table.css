@@ -1,0 +1,27 @@
+table {
+  font-family: var(--font-small);
+  font-size: 12px;
+  width: 100%;
+  align-self: center;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px 0;
+}
+
+th {
+  background-color: rgb(140, 209, 255);
+}
+
+td {
+  background-color: rgb(212, 212, 212);
+}
+
+.modal {
+  .modal__content {
+    .modal__text {
+      padding: 1rem 1rem 1rem 1rem;
+    }
+  }
+}
