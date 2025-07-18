@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finalizar compra - Mr Maverick</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <div class="inner-header">
+          <div class="holder-logo">
+            <div class="logo">
+              <a href="#">
+                <img src="assets/logo.png" alt="" class="img-logo" />
+              </a>
+            </div>
+          </div>
+          <div class="holder-pagseg">
+            <div class="item-security">
+              <img src="assets/payment-seg.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="content">
+        <div class="countdown">
+          <div class="holder-countdown">
+            <div class="countdown-text">
+              <p>Você está a um passo de se vestir melhor!</p>
+            </div>
+            <div class="countdown-time">
+              <img src="assets/clock.svg" alt="" />
+              &nbsp; Oferta expira em &nbsp; <span>00:00:00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards">
+          <ul class="steps-checkout hide">
+            <li class="checkout-step" id="step-identify">
+              <div class="progress-bar"></div>
+              <div class="holder-icon">1</div>
+              <div class="info">Informações pessoais</div>
+            </li>
+            <li class="checkout-step disabled" id="step-entrega">
+              <div class="progress-bar"></div>
+              <div class="holder-icon">2</div>
+              <div class="info">Entrega</div>
+            </li>
+            <li class="checkout-step disabled" id="step-pagamento">
+              <div class="progress-bar"></div>
+              <div class="holder-icon">3</div>
+              <div class="info">Pagamento</div>
+            </li>
+          </ul>
+          <div class="col-checkout-1 col-1">
+            <!-- identify -->
+            <div class="box-card box-model-mobile active">
+              <div class="box-title">
+                <div class="holder-number">1</div>
+                <div class="title-card">Identifique-se</div>
+              </div>
+              <div class="desc">
+                Utilizaremos seu e-mail para: Identificar seu perfil, histórico
+                de compra, notificação de pedidos e carrinho de compras.
+              </div>
+              <div class="box-content">
+                <form id="formIdentify" method="post" action="">
+                  <div class="-group">
+                    <label for="nameInput" class="label-control"
+                      >Nome completo</label
+                    >
+                    <div class="holder-input">
+                      <input
+                        type="text"
+                        id="nameInput"
+                        name="nameInput"
+                        placeholder="ex.: Maria de Almeida Cruz"
+                      />
+                      <i class="img-sucess"
+                        ><img src="assets/sucess-icon.svg" alt=""
+                      /></i>
+                      <i class="img-error"
+                        ><img src="assets/erro-icon.svg" alt=""
+                      /></i>
+                      <small id="name_error"></small>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email" class="label-control">E-mail</label>
+                    <div class="holder-input">
+                      <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="ex.: maria@gmail.com"
+                      />
+                      <i class="img-sucess"
+                        ><img src="assets/sucess-icon.svg" alt=""
+                      /></i>
+                      <i class="img-error"
+                        ><img src="assets/erro-icon.svg" alt=""
+                      /></i>
+                      <small id="email_error"></small>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cpf" class="label-control">CPF</label>
+                    <div class="holder-input input-flex">
+                      <input
+                        type="text"
+                        id="cpf"
+                        name="cpf"
+                        placeholder="000.000.000-00"
+                        maxlength="14"
+                        autocomplete="off"
+                      />
+                      <i class="img-sucess"
+                        ><img src="assets/sucess-icon.svg" alt=""
+                      /></i>
+                      <i class="img-error"
+                        ><img src="assets/erro-icon.svg" alt=""
+                      /></i>
+                      <small id="cpf_error"></small>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="tel" class="label-control"
+                      >Celular / Whatsapp</label
+                    >
+                    <div class="holder-input">
+                      <div class="flex-tel">
+                        <span class="input-area-cod">+55</span>
+                        <input
+                          type="tel"
+                          id="tel"
+                          name="tel"
+                          placeholder="(00) 00000-0000"
+                          maxlength="15"
+                        />
+                      </div>
+                      <i class="img-sucess ap1"
+                        ><img src="assets/sucess-icon.svg" alt=""
+                      /></i>
+                      <i class="img-error ap1"
+                        ><img src="assets/erro-icon.svg" alt=""
+                      /></i>
+                      <small id="tel_error"></small>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button type="submit">
+                      Continuar
+                      <img src="assets/arrow.png" alt="" />
+                    </button>
+                  </div>
+
+                  <div class="types-payment-logo">
+                    <img
+                      src="./assets/card-master.svg"
+                      alt="Mastercard"
+                      class="card-icon"
+                    />
+                    <img
+                      src="./assets/card-visa.svg"
+                      alt="Visa"
+                      class="card-icon"
+                    />
+                    <img
+                      src="./assets/card-elo.svg"
+                      alt="Elo"
+                      class="card-icon"
+                    />
+                    <img
+                      src="./assets/card-amex.svg"
+                      alt="American Express"
+                      class="card-icon"
+                    />
+                    <img
+                      src="./assets/card-diners.svg"
+                      alt="Diners"
+                      class="card-icon"
+                    />
+                    <img src="assets/pix-sec.png" alt="Pix" class="card-icon" />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- IDENTIFY CHECKOUT INFO-->
+            <div class="box-card hide" id="boxIdentifyConfirm">
+              <div class="box-title">
+                <div class="holder-number">1</div>
+                <div class="title-card">Identifique-se</div>
+              </div>
+              <div class="box-checkout-user">
+                <div class="username" id="userName">Jose Gleu</div>
+                <div class="user-info mb5" id="userEmail">
+                  josegleu@hotmail.com
+                </div>
+                <div class="user-info" id="userCPF">CPF 053.265.804-38</div>
+              </div>
+              <div class="edit" id="editIdentifyBtn">
+                <img src="assets/pencil-edit.svg" alt="" />
+              </div>
+            </div>
+            <!-- address -->
+            <div class="box-card box-model-mobile active">
+              <!-- col-mobile- para ocular o mobile-->
+              <div class="box-title">
+                <div class="holder-number">2</div>
+                <div class="title-card">Entrega</div>
+              </div>
+              <div class="desc">
+                Preencha suas informações pessoais para continuar.
+              </div>
+              <div class="desc hide">Cadastre ou selecione um endereço</div>
+              <div class="box-content">
+                <form id="formAddress" method="post">
+                  <div class="form-group input-flex">
+                    <label for="cep" class="label-control">CEP</label>
+                    <div class="holder-input">
+                      <input
+                        type="text"
+                        id="cep"
+                        name="cep"
+                        placeholder="ex.: 50.000-000"
+                        maxlength="10"
+                      />
+                      <i class="img-sucess"
+                        ><img src="assets/sucess-icon.svg" alt=""
+                      /></i>
+                      <i class="img-error"
+                        ><img src="assets/erro-icon.svg" alt=""
+                      /></i>
+                      <small id="name_errors"></small>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class="form-group">
+                      <label for="address" class="label-control"
+                        >Endereço</label
+                      >
+                      <div class="holder-input">
+                        <input
+                          type="text"
+                          id="address"
+                          name="address"
+                          placeholder=""
+                        />
+                        <i class="img-sucess"
+                          ><img src="assets/sucess-icon.svg" alt=""
+                        /></i>
+                        <i class="img-error"
+                          ><img src="assets/erro-icon.svg" alt=""
+                        /></i>
+                        <small id="name_errors"></small>
+                      </div>
+                    </div>
+                    <div class="flex">
+                      <div class="form-group input-flex">
+                        <label for="number" class="label-control">Número</label>
+                        <div class="holder-input">
+                          <input type="text" id="number" name="number" />
+                          <i class="img-sucess"
+                            ><img src="assets/sucess-icon.svg" alt=""
+                          /></i>
+                          <i class="img-error"
+                            ><img src="assets/erro-icon.svg" alt=""
+                          /></i>
+                          <small id="name_errors"></small>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="district" class="label-control"
+                          >Bairro</label
+                        >
+                        <div class="holder-input">
+                          <input type="text" id="district" name="district" />
+                          <i class="img-sucess"
+                            ><img src="assets/sucess-icon.svg" alt=""
+                          /></i>
+                          <i class="img-error"
+                            ><img src="assets/erro-icon.svg" alt=""
+                          /></i>
+                          <small id="name_errors"></small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="complement" class="label-control"
+                        >Complemento <span class="optional">(opcional)</span>
+                      </label>
+                      <div class="holder-input">
+                        <input type="text" id="complement" name="complement" />
+                        <i class="img-sucess"
+                          ><img src="assets/sucess-icon.svg" alt=""
+                        /></i>
+                        <i class="img-error"
+                          ><img src="assets/erro-icon.svg" alt=""
+                        /></i>
+                        <small id="name_errors"></small>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="name-saved" class="label-control"
+                        >Destinatário</label
+                      >
+                      <div class="holder-input">
+                        <input
+                          type="text"
+                          id="name-saved"
+                          name="name-saved"
+                          placeholder="José Gleu"
+                        />
+                        <i class="img-sucess">
+                          <img src="assets/sucess-icon.svg" alt="" />
+                        </i>
+                        <i class="img-error">
+                          <img src="assets/erro-icon.svg" alt="" />
+                        </i>
+                        <small id="name_saved_errors"></small>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="button" id="named-save-button">
+                        Salvar
+                        <img src="assets/arrow.png" alt="" />
+                      </button>
+                    </div>
+                  </div>
+                  <!--</form>-->
+                  <div class="box-address-step">
+                    <a href="javascript:" class="link-new-address">
+                      + Novo endereço
+                    </a>
+                    <div class="box-address-info" hidden>
+                      <label for="address">
+                        <div>
+                          <input type="radio" name="address" id="" checked />
+                        </div>
+                        <div class="box-full-address">
+                          <span
+                            >Rua do Hospicio, 194 - Boa Vista
+                            <br />
+                            Recife - PE CEP 50.060-100
+                          </span>
+                        </div>
+                        <div class="box-options">
+                          <div class="options">
+                            <a class="option" href="#">
+                              <img src="assets/pencil-edit.svg" alt="" />
+                              <span>Editar</span>
+                            </a>
+                          </div>
+                          <div class="options">
+                            <a class="option" href="">
+                              <img src="assets/trash-edit.svg" alt="" />
+                              <span>Excluir</span>
+                            </a>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                    <hr />
+                    <div class="f13">Escolha uma forma de entrega:</div>
+                    <div class="box-address-info">
+                      <div class="box-address-choice">
+                        <input
+                          type="radio"
+                          name="transport"
+                          value="GRATUITO"
+                          id="transport-gratuito"
+                          checked
+                        />
+                        <label for="transport-gratuito">
+                          <div class="box-full-address">
+                            <span>
+                              <img
+                                src="assets/correios-logo.png"
+                                alt="Logo dos Correios"
+                              />
+                              de 8 a 17 dias
+                              <br />
+                              Entrega Garantida
+                            </span>
+                          </div>
+                          <div class="box-options">Grátis</div>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="box-address-info">
+                      <div class="box-address-choice">
+                        <input
+                          type="radio"
+                          name="transport"
+                          value="EXPRESSO_SEGURO"
+                          id="transport-expresso_seguro"
+                        />
+                        <label for="transport-expresso_seguro">
+                          <div class="box-full-address">
+                            <span>
+                              <img
+                                src="assets/correios-logo.png"
+                                alt="Logo dos Correios"
+                              />
+                              de 7 a 12 dias
+                              <br />
+                              Frete Expresso com Seguro
+                            </span>
+                          </div>
+                          <div class="box-options">R$ 14,90</div>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button type="submit">
+                        Continuar
+                        <img src="assets/arrow.png" alt="" />
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- ADDRESS FINISH CHECKOUT INFO-->
+            <div class="box-card hide">
+              <div class="box-title">
+                <div class="holder-number">2</div>
+                <div class="title-card">entrega</div>
+              </div>
+              <div class="box-checkout-user">
+                <div class="username">Endereço para entrega:</div>
+                <div class="user-info mb5" id="resumo-endereco">
+                  Rua Bispo Cardoso Ayres, 100 - Boa Vista <br />
+                  Recife-PE | CEP 50050-100
+                </div>
+                <div class="user-info" id="resumo-destinatario">
+                  CPF 053.265.804-38
+                </div>
+              </div>
+              <div class="box-checkout-user">
+                <div class="username">Forma de entrega:</div>
+                <div class="user-info mb5" id="resumo-forma-entrega">
+                  JADLOG - de 4 a 7 dias úteis R$ 9,90
+                </div>
+              </div>
+              <div class="edit" id="editAddressBtn">
+                <img src="assets/pencil-edit.svg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="col-checkout-2 col-2">
+            <!-- payment -->
+            <div class="box-card box-model-mobile active" id="paymentStep">
+              <!-- col-mobile- para ocultar no mobile, se precisares -->
+              <div class="box-title">
+                <div class="holder-number">3</div>
+                <div class="title-card">Pagamento</div>
+              </div>
+              <!-- descrição antes do pagamento -->
+              <div class="desc">Escolha uma forma de pagamento</div>
+              <!-- segunda descrição opcional (usa .hide se for alternar depois) -->
+              <div class="desc hide">Resumo do pagamento</div>
+
+              <div class="box-content">
+                <div id="paymentResult" class="payment-result" hidden></div>
+                <form id="formPayment" method="post">
+                  <div class="card-payment">
+                    <div class="header-card-payment">
+                      <div class="type-payment">
+                        <input
+                          type="radio"
+                          name="option"
+                          id="credit-card-option"
+                        />
+                        <label for="credit-card-option" class="label-control">
+                          <div class="label-icon-info">
+                            <img
+                              src="assets/credit-card-flag.png"
+                              alt="Ícone de cartão de crédito"
+                            />
+                            Cartão de Crédito
+                          </div>
+                        </label>
+                      </div>
+                      <div class="cards-logo-type-payment">
+                        <img
+                          src="./assets/card-master.svg"
+                          height="20"
+                          alt="Cartão Mastercard"
+                          class="card-icon"
+                        />
+                        <img
+                          src="./assets/card-visa.svg"
+                          height="20"
+                          alt="Cartão Visa"
+                          class="card-icon"
+                        />
+                        <img
+                          src="./assets/card-elo.svg"
+                          height="20"
+                          alt="Cartão Elo"
+                          class="card-icon"
+                        />
+                        <img
+                          src="./assets/card-amex.svg"
+                          height="20"
+                          alt="Cartão American Express"
+                          class="card-icon"
+                        />
+                        <img
+                          src="./assets/card-diners.svg"
+                          height="20"
+                          alt="Cartão Diners Club"
+                          class="card-icon"
+                        />
+                      </div>
+                    </div>
+                    <div class="card-wrapper">
+                      <div class="card-container">
+                        <div class="card-unknow-front">
+                          <div class="card-logo">visa</div>
+                          <div class="card-details-info">
+                            <div class="card-chip"></div>
+                            <div class="card-number">•••• •••• •••• ••••</div>
+                            <div class="card-name">NOME E SOBRENOME</div>
+                            <div
+                              class="card-expiry"
+                              data-before="mês/ano"
+                              data-after="validade"
+                            >
+                              ••/••
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /credit card magic -->
+                    <div class="form-group">
+                      <label for="card-number" class="label-control"
+                        >Número do cartão</label
+                      >
+                      <div class="holder-input">
+                        <input
+                          type="text"
+                          id="card-number"
+                          name="card-number"
+                          placeholder="1111 2222 3333 4444"
+                          maxlength="19"
+                        />
+                        <i class="img-sucess"
+                          ><img src="assets/sucess-icon.svg" alt=""
+                        /></i>
+                        <i class="img-error"
+                          ><img src="assets/erro-icon.svg" alt=""
+                        /></i>
+                        <small id="name_errors"></small>
+                      </div>
+                    </div>
+                    <div class="flex">
+                      <div class="form-group input-flex-card">
+                        <label for="card-valid" class="label-control"
+                          >Validade
+                          <span class="optional">(mês/ano)</span></label
+                        >
+                        <div class="holder-input">
+                          <input
+                            type="text"
+                            id="card-valid"
+                            name="card-valid"
+                            maxlength="5"
+                          />
+                          <i class="img-sucess"
+                            ><img src="assets/sucess-icon.svg" alt=""
+                          /></i>
+                          <i class="img-error"
+                            ><img src="assets/erro-icon.svg" alt=""
+                          /></i>
+                          <small id="name_errors"></small>
+                        </div>
+                      </div>
+                      <div class="form-group ml8">
+                        <label for="card-code" class="label-control"
+                          >Cód. de Segurança
+                          <i class="question"></i>
+                        </label>
+                        <div class="holder-input">
+                          <input type="text" id="card-code" name="card-code" />
+                          <i class="img-sucess"
+                            ><img src="assets/sucess-icon.svg" alt=""
+                          /></i>
+                          <i class="img-error"
+                            ><img src="assets/erro-icon.svg" alt=""
+                          /></i>
+                          <small id="name_errors"></small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="card-owner" class="label-control"
+                        >Nome e sobrenome do titular</label
+                      >
+                      <div class="holder-input">
+                        <input
+                          type="text"
+                          id="card-owner"
+                          name="card-owner"
+                          placeholder="ex.: MARIA DE A CRUZ"
+                        />
+                        <i class="img-sucess"
+                          ><img src="assets/sucess-icon.svg" alt=""
+                        /></i>
+                        <i class="img-error"
+                          ><img src="assets/erro-icon.svg" alt=""
+                        /></i>
+                        <small id="name_errors"></small>
+                      </div>
+                      <div id="name_errors" class="error-block"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="card-cpf" class="label-control"
+                        >CPF do titular</label
+                      >
+                      <div class="holder-input">
+                        <input
+                          type="text"
+                          id="card-cpf"
+                          name="card-cpf"
+                          placeholder="000.000.000-00"
+                          maxlength="14"
+                          autocomplete="off"
+                        />
+                        <i class="img-sucess"
+                          ><img src="assets/sucess-icon.svg" alt=""
+                        /></i>
+                        <i class="img-error"
+                          ><img src="assets/erro-icon.svg" alt=""
+                        /></i>
+                        <small id="name_errors"></small>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="installments" class="label-control"
+                        >Nº de Parcelas</label
+                      >
+                      <div class="holder-input flex">
+                        <select name="installments" id="installments">
+                          <option value="">---</option>
+                          <option value="1">1x</option>
+                          <option value="2">2x</option>
+                          <option value="3">3x</option>
+                          <option value="4">4x</option>
+                        </select>
+                        <small></small>
+                        <i class="img-error" style="visibility: hidden">
+                          <img src="assets/erro-icon.svg" alt="Erro" />
+                        </i>
+                        <i class="img-sucess" style="visibility: hidden">
+                          <img src="assets/sucess-icon.svg" alt="Sucesso" />
+                        </i>
+                      </div>
+                      <span class="optional"
+                        >Preencha o cartão para selecionar as parcelas
+                      </span>
+                    </div>
+                    <!-- /ORDER BUMP -->
+                    <div class="form-group mb">
+                      <button type="submit" id="submit-payment-credit-card">
+                        <img
+                          class="security-icon"
+                          src="assets/1.png"
+                          alt="security"
+                        />
+                        pagar com cartão
+                      </button>
+                      <div class="info-security-card-pay">
+                        <div class="security-icon">
+                          <img src="assets/s2.png" alt="" /> Pagamento Seguro
+                        </div>
+                        <div class="security-flags">
+                          <img src="assets/visa-sec.png" alt="" />
+                          <img src="assets/id-sec.png" alt="" />
+                          <img src="assets/safe-sec.png" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pix-payment hide">
+                    <div class="header-pix-payment">
+                      <div class="type-payment">
+                        <input type="radio" name="option" id="pix-option" />
+                        <label for="pix-option" class="label-control">
+                          <img src="assets/pix-sec.png" alt="Logo do Pix" />
+                        </label>
+                      </div>
+                      <div class="off-info">
+                        <span>Aprovação imediata + 5% OFF</span>
+                      </div>
+                    </div>
+
+                    <div class="pix-desc">
+                      <ul>
+                        <li>30 minutos para pagar</li>
+                        <li>Pagamento à vista</li>
+                        <li>Após pagar, seu pedido é aprovado na hora</li>
+                        <li>Seu pedido chegará mais rápido</li>
+                      </ul>
+                    </div>
+                    <div class="form-group mb">
+                      <button type="submit" id="submit-payment-pix">
+                        <img
+                          class="security-icon"
+                          src="assets/1.png"
+                          alt="Ícone de segurança"
+                        />
+                        pagar com pix
+                      </button>
+                    </div>
+                  </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          <div class="col-checkout-3">
+            <div class="box-card-resume closed">
+              <div class="box-title flex-mobile">
+                <div class="resume-title">
+                  <span class="title-card title-card-mobile no-bold"
+                    >resumo</span
+                  >
+                  <span class="itens-count-mobile">(4)</span>
+                  <div class="resume-description closed">
+                    Informações da sua compra
+                  </div>
+                </div>
+                <div class="box-price-mobile">
+                  <!-- <span id="total-cart-mobile" class="total-cart-mobile">R$ 449,50</span> -->
+                  <img
+                    class="icon-accordion closed"
+                    src="assets/icon-accordion.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div id="resume-toggle" class="box-content col-mobile">
+                <div class="cart-resume">
+                  <div class="detail total">
+                    <div class="description">Total</div>
+                    <div id="detail-total" class="value value-total">R$ 99,90</div>
+                  </div>
+                </div>
+                  <!-- resume item 2 -->
+                  <div class="cart-resume-item">
+                    <div class="item-image">
+                      <img class="thumb-product" src="./assets/img_principal.png" alt="">
+                    </div>
+                    <div class="item-detail">
+                      <div class="item-row">
+                        <div class="item-delete"></div>
+                      </div>
+
+                      <div class="item-row">
+                        <span id="item-variation-size" class="item-variation">Tamanho: P</span>
+                        <span id="item-variation-description" class="item-variation">Cor: Azul Claro e AzulEscuro.</span>
+                        <span class="item-variation"
+                          >100% algodão com micro elasticidade.</span
+                        >
+                      </div>
+
+                      <div class="item-row">
+                        <span id="item-price-sale-unit" class="item-price"> R$ 99,90</span>
+                      </div>
+
+                      <!-- add item count range -->
+                      <div class="item-row">
+                        <div
+                          class="item-quantity-selector-holder js-item-quantity-selector-holder"
+                        >
+                          <div class="relative">
+                            <a href="javascript:" class="switch-control less">
+                              <i class="icon icon-less"></i>
+                            </a>
+
+                            <a href="javascript:" class="switch-control more">
+                              <i class="icon icon-more"></i>
+                            </a>
+                            <input
+                            id="quantity-sale"
+                              type="text"
+                              class="input-quantity js-input-quantity"
+                              value="4"
+                            />
+                          </div>
+                          <div
+                            class="error-item red f11 hide text-center"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /col 3 cart resume -->
+          <div class="col-checkout-4 col-4">
+            <div class="box-card-resume">
+              <div class="testimonials">
+                <div class="box-testimonial">
+                  <div class="box-testimonial__photo pull-left ml20">
+                    <img
+                      src="assets/user1.jpg"
+                      alt="Marcus Vinicius"
+                      class="photo"
+                    />
+                  </div>
+                  <!-- /.box-testimonial__photo -->
+                  <div class="box-testimonial__infos pull-left ml15">
+                    <div class="rating">
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                    </div>
+                    <strong class="infos__name black-60">Lucas S.</strong>
+                    <p class="infos__text black-60">
+                      "Nunca me senti tão seguro em uma compra online! O
+                      processo de pagamento é rápido e transparente, e recebi
+                      atualizações em cada etapa. Já estou ansioso para a
+                      próxima compra!"
+                    </p>
+                  </div>
+                </div>
+                <!-- /.box-testimonial -->
+                <div class="box-testimonial clearfix">
+                  <div class="box-testimonial__photo pull-left ml20">
+                    <img
+                      src="assets/user2.jpg"
+                      alt="João Paulo"
+                      class="photo"
+                    />
+                  </div>
+                  <!-- /.box-testimonial__photo -->
+                  <div class="box-testimonial__infos pull-left ml15">
+                    <div class="rating">
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                    </div>
+                    <strong class="infos__name black-60">Ana P.</strong>
+                    <p class="infos__text black-60">
+                      Gostei muito, qualidade aburda!! Recomendo muito
+                    </p>
+                  </div>
+                  <!-- /.box-testimonial__infos -->
+                </div>
+                <!-- /.box-testimonial -->
+                <div class="box-testimonial clearfix">
+                  <div class="box-testimonial__photo pull-left ml20">
+                    <img
+                      src="assets/user3.jpg"
+                      alt="Matheus Santos"
+                      class="photo"
+                    />
+                  </div>
+                  <!-- /.box-testimonial__photo -->
+                  <div class="box-testimonial__infos pull-left ml15">
+                    <div class="rating">
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                      <img src="assets/star.png" alt="" />
+                    </div>
+                    <strong class="infos__name black-60">Pedro M.</strong>
+                    <p class="infos__text black-60">
+                      A experiência de pagamento foi impecável! Usei o PIX e
+                      ainda ganhei um desconto extra. A equipe do suporte foi
+                      super atenciosa e me deu total segurança na transação.
+                    </p>
+                  </div>
+                  <!-- /.box-testimonial__infos -->
+                </div>
+                <!-- /.box-testimonial -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="-mobile-left">
+        <div class="payment-methods-holder">
+          <div class="-title">Formas de pagamento</div>
+          <div class="-payment-list">
+            <img
+              alt="mastercard"
+              width="39"
+              height="26"
+              src="./assets/card-master.svg"
+            />
+            <span class="line-break hide"></span>
+            <img
+              alt="visa"
+              width="39"
+              height="26"
+              src="./assets/card-visa.svg"
+            />
+            <span class="line-break hide"></span>
+            <img alt="elo" width="39" height="26" src="./assets/card-elo.svg" />
+            <span class="line-break hide"></span>
+            <img
+              alt="amex"
+              width="39"
+              height="26"
+              src="./assets/card-amex.svg"
+            />
+            <span class="line-break hide"></span>
+            <img
+              alt="diners"
+              width="39"
+              height="26"
+              src="./assets/card-diners.svg"
+            />
+            <span class="line-break hide"></span>
+            <img alt="pix" width="39" height="26" src="./assets/card-pix.svg" />
+          </div>
+        </div>
+        <div class="store-info-holder">
+          <div class="-store-name">Jose Gleu: josegleu.com.br</div>
+          <div class="-store-document">
+            <span class="-holder-store-name">© 2024 Jose Gleu</span>
+            <span class="-holder-document"
+              >CNPJ:<span class="cnpj">00.000.000/0001-00</span>
+            </span>
+          </div>
+        </div>
+        <div class="security-label">
+          <img src="assets/payment-seg-black.png" alt="" />
+        </div>
+      </footer>
+    </div>
+    </div> <!-- essa div sai daqui caso exista boleto-->
+    <div id="toast" class="toast hidden"></div>
+    <div id="toast-message" class="toast-message hidden"></div>
+    <script src="../config.js"></script>
+    <script src="script.js"></script>
+    <script src="../utils.js"></script>
+  </body>
+</html>

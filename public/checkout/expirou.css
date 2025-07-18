@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Bitstream";
+    src: url(assets/VeraMono.ttf);
+}
+
+/* central de controle: cores, tamanhos, estilos, padrão */
+:root {
+    /* colors */
+    --header-bg-color: #000000;
+    --content-bg-color: #f4f6f8;
+    --text-desc: #666666;
+    --box-card-bg-color: #FFFFFF;
+    --ob-bg-color: #FFFFd1;
+    --ob-border-color: #d1d1d1;
+    --ob-btn-bg-color: #fe509c;
+    --ob-btn-txt-color: #FFFFFF;
+
+    /* fonts **/
+    --font-main: Helvetica;
+    --text-font: Rubik, sans-serif;
+
+    /* sizes h w */
+    --dektop-width: 1196px;
+    --max-width-col: 385px;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--content-bg-color);
+    font-family: var(--text-font);
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER AREA */
+
+header {
+    background-color: var(--header-bg-color);
+    box-shadow: 0 0 2px 0 hsla(0, 0%, 80%, .5);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center
+}
+
+header .inner-header {
+    width: var(--dektop-width);
+    max-height: 80px;
+    max-width: var(--dektop-width);
+    display: flex;
+}
+
+header .inner-header .holder-logo {
+    max-width: var(--dektop-width);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 65px;
+    position: absolute;
+    box-sizing: border-box;
+    height: 80px;
+}
+
+header .inner-header .logo a {
+    text-decoration: none;
+    text-align: center;
+}
+
+header .inner-header .logo .img-logo {
+    display: block;
+    max-width: 165px;
+    width: 100%;
+    max-height: 45px;
+}
+
+header .inner-header .holder-pagseg {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+header .inner-header .holder-pagseg .item-security {
+    position: relative;
+}
+
+header .inner-header .holder-pagseg svg {
+    width: 89px;
+    height: 19px;
+}
+
+/* /HEADER AREA */
+
+/* CONTENT AREA */
+
+.content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 25px 0 45px;
+    min-height: 70vh;
+}
+
+.content .box-content {
+    display: flex;
+    justify-content: center;
+    max-width: var(--dektop-width);
+    width: 100%;
+    margin: 55px 0;
+    transition: .5s;
+}
+
+.content .box-content .box-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content .box-content .box-info img {
+    height: 60px;
+    width: 60px;
+    margin: 0 0 24px;
+}
+
+.content .box-content .box-info h1 {
+    text-transform: uppercase;
+    color: #e50f38 !important;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.content .box-content .box-info .desc-expired-pix {
+    max-width: 500px;
+    text-align: center;
+    margin: 24px 0 29px;
+}
+
+.content .box-content .box-info div a {
+    vertical-align: middle;
+    text-decoration: none;
+    padding: 15px 25px;
+    background-color: #999999;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    border-radius: 30px;
+    border: 0;
+    text-transform: uppercase;
+}
+
+.content .box-content .box-info div {
+    margin-top: 20px;
+}
+
+.content .box-content .box-info div a img {
+    height: 16px;
+    width: 16px;
+    margin: auto;
+    vertical-align: middle;
+    transform: rotate(-90deg);
+    margin-right: 8px;
+}
+
+/* footer */
+
+footer {
+    clear: both;
+    color: black;
+    padding: 30px 0 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+footer {
+    transition: all .4s;
+}
+
+.-title {
+    font-family: var(--text-font);
+    font-size: 13px;
+}
+
+.-payment-list {
+    margin: 8px var(--negative-payment-list-spacing, 1px);
+}
+
+footer .-payment-list img {
+    display: inline-block;
+    height: var(--payment-img-height, 26px);
+    margin: var(--payment-list-spacing, 6px);
+    width: var(--payment-img-width, 39px);
+}
+
+.store-info-holder {
+    font-family: var(--text-font);
+    font-size: 10px;
+}
+
+.-store-name {
+    margin-bottom: 5px;
+}
+
+.security-label {
+    margin-top: 25px;
+}
+
+.black-svg {
+    fill: rgb(0, 0, 0);
+}
+
+/* media control */
+
+@media (max-width: 1200px) {
+
+    header {
+        background-color: var(--header-bg-color);
+        box-shadow: 0 0 2px 0 hsla(0, 0%, 80%, .5);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    header .inner-header .holder-pagseg {
+        width: 99%;
+    }
+
+    header .inner-header .holder-pagseg svg {
+        height: 15px;
+    }
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
+@media (max-width: 520px) {
+
+    .content .box-content .box-info h1 {
+        font-size: 30px;
+        font-weight: 700;
+        transition: .5s;
+    }
+    
+}
+/* end responsive media controls */
