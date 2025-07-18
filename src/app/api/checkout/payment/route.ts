@@ -1,6 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { handleCorsOptions } from "@/utils/corsOptionsResponse";
+import axios from "axios";
+
+interface BraspagPayment {
+  Tid: string;
+  Status: number | string;
+  AuthorizationCode?: string | null;
+  Type?: string | null;
+}
+
+interface BraspagResponse {
+  Payment: BraspagPayment;
+}
 
 export async function OPTIONS() {
   return handleCorsOptions();
@@ -23,6 +35,7 @@ export async function POST(req: NextRequest) {
       brand,
     } = body;
 
+    // Validações básicas
     if (
       !checkoutId ||
       !nomeNoCartao ||
@@ -66,7 +79,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Requisição para a Braspag
+    // Payload para Braspag
     const braspagPayload = {
       MerchantOrderId: checkoutId,
       Customer: {
@@ -77,6 +90,7 @@ export async function POST(req: NextRequest) {
         Type: "CreditCard",
         Amount: amountInCents,
         Installments: parcelas,
+        Provider: "Simulado",
         Capture: true,
         CreditCard: {
           CardNumber: cardNumber.replace(/\s/g, ""),
@@ -89,49 +103,50 @@ export async function POST(req: NextRequest) {
     };
 
     const isSandbox = process.env.BRASPAG_IS_SANDBOX === "true";
-
     const url = isSandbox
       ? "https://apisandbox.braspag.com.br/v2/sales"
       : "https://api.braspag.com.br/v2/sales";
 
-    const braspagResponse = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        MerchantId: process.env.BRASPAG_MERCHANT_ID!,
-        MerchantKey: process.env.BRASPAG_MERCHANT_KEY!,
-      },
-      body: JSON.stringify(braspagPayload),
-    });
+    const headers = {
+      "Content-Type": "application/json",
+      MerchantId: process.env.MERCHANT_ID ?? "",
+      MerchantKey: process.env.MERCHANT_KEY ?? "",
+    };
 
-    const result = await braspagResponse.json();
+    // Chamada com axios
+    const { data: result } = await axios.post<BraspagResponse>(
+      url,
+      braspagPayload,
+      { headers }
+    );
 
-    if (!braspagResponse.ok || !result.Payment) {
+    if (!result?.Payment) {
       return NextResponse.json(
         {
-          message: "Erro da Braspag ao processar o pagamento",
-          error: result,
+          message: "Resposta da Braspag não contém dados de pagamento válidos",
+          raw: result,
         },
         { status: 502 }
       );
     }
 
-    const paymentData = {
-      validade: expirationDate,
-      nomeNoCartao,
-      cpfTitular,
-      parcelas,
-      seguro: seguro ?? false,
-      status: result.Payment.Status ?? "unknown",
-      transactionId: result.Payment.Tid ?? "",
-      authorizationCode: result.Payment.AuthorizationCode ?? null,
-      paymentType: result.Payment.Type ?? null,
-      checkoutId,
-      last4Digits,
-    };
-
+    // Gravação no banco
     const payment = await prisma.payment.create({
-      data: paymentData,
+      data: {
+        validade: expirationDate,
+        nomeNoCartao,
+        cpfTitular,
+        parcelas,
+        seguro: seguro ?? false,
+        status: String(result.Payment.Status ?? "unknown"),
+        transactionId: result.Payment.Tid ?? "",
+        authorizationCode: result.Payment.AuthorizationCode ?? null,
+        paymentType: result.Payment.Type ?? null,
+        last4Digits,
+        checkout: {
+          connect: { id: checkoutId },
+        },
+      },
     });
 
     return NextResponse.json({
@@ -139,14 +154,32 @@ export async function POST(req: NextRequest) {
       payment,
       braspagResponse: result,
     });
-  } catch (error) {
-    console.error("❌ Erro ao processar pagamento:", error);
+  } catch (error: unknown) {
+    let status = 500;
+    let raw = "Erro desconhecido";
+
+    if (typeof error === "object" && error !== null && "response" in error) {
+      const err = error as {
+        response: { status?: number; data?: unknown };
+      };
+      status = err.response?.status || 502;
+
+      if (typeof err.response.data === "string") {
+        raw = err.response.data;
+      } else if (typeof err.response.data === "object") {
+        raw = JSON.stringify(err.response.data, null, 2);
+      } else {
+        raw = "Erro sem corpo de resposta";
+      }
+    }
+
     return NextResponse.json(
       {
         message: "Erro inesperado ao processar o pagamento",
-        error: String(error),
+        error: raw,
+        status,
       },
-      { status: 500 }
+      { status: 502 }
     );
   }
 }
