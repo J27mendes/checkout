@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   modal.addEventListener("click", (e) => {
-    if (e.target && e.target.id === "close_modal") {
+    if (e.target || e.target.id === "close_modal") {
       fecharModal();
       habilitarBotoes();
     }
